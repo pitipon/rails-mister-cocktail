@@ -2,6 +2,7 @@ class DosesController < ApplicationController
   before_action :set_cocktail, only: [:new, :create]
   before_action :set_ingredient, only: [:create]
   before_action :all_ingredients, only: [:new]
+  before_action :set_dose, only: [:destroy]
 
   def new
     # @cocktail in our `simple_form_for`
@@ -15,6 +16,11 @@ class DosesController < ApplicationController
     @dose.ingredient = @ingredient
     @dose.save
     redirect_to cocktail_path(@cocktail)
+  end
+
+  def destroy
+    @dose.destroy
+    redirect_to cocktails_path(@cocktail), notice: 'Cocktail was successfully destroyed.'
   end
 
   private
@@ -33,6 +39,10 @@ class DosesController < ApplicationController
 
   def dose_params
       params.require(:dose).permit(:description, :quantity)
+  end
+
+  def set_dose
+      @dose = Dose.find(params[:id])
   end
 
 end

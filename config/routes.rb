@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :cocktails do
     resources :doses, only: [:new, :create]
   end
+
+  post 'doses/:id', to: "doses#destroy", as: 'doses_destroy'
+
 #   Prefix Verb   URI Pattern                                 Controller#Action
 #     root GET    /                                           cocktails#index
 # ingredients GET    /ingredients(.:format)                      ingredients#index
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
 #          DELETE /ingredients/:id(.:format)                  ingredients#destroy
 # cocktail_doses POST   /cocktails/:cocktail_id/doses(.:format)     doses#create
 # new_cocktail_dose GET    /cocktails/:cocktail_id/doses/new(.:format) doses#new
+# cocktail_dose DELETE /cocktails/:cocktail_id/doses/:id(.:format) doses#destroy
 # cocktails GET    /cocktails(.:format)                        cocktails#index
 #          POST   /cocktails(.:format)                        cocktails#create
 # new_cocktail GET    /cocktails/new(.:format)                    cocktails#new

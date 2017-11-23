@@ -3,8 +3,8 @@
 
 
 <%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :ingredient_id, :collection => @ingredients.map { |x| [x.name, x.id]}, :placeholder => "choose ingredient" %>
-  <%= f.input :quantity , :collection => [1,2,3,4,5], :placeholder => "choose quantity" %>
+  <%= f.input :ingredient_id, :collection => @ingredients.map { |x| ["#{x.name} (#{x.quantity_measurement})",  x.id]}, :include_blank => "(select if none)" %>
+  <%= f.input :quantity , :placeholder   => "only number" %>
   <%= f.input :description %>
   <%= f.submit "add ingredient", class: "btn btn-primary" %>
 <% end %>
