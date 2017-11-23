@@ -5,7 +5,7 @@
   <h1><%= @cocktail.name %></h1>
   <p><%= @cocktail.description %> | Price: <%= @cocktail.price %></p>
 
-
+<%= link_to 'Add more ingredient', new_cocktail_dose_path(@cocktail), :class => "btn btn-primary btn-xs" %>
   <% @ingredients.each do |x| %>
     <div class="alert alert-info" role="alert">
       <%= x[:ingredient].name %>  <span class="badge"><%= x[:dose].description %></span>

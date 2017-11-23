@@ -1,0 +1,10 @@
+<h1>Choose Ingredient for <%= @cocktail.name %></h1>
+
+
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :ingredient_id, :collection => @ingredients.map { |x| [x.name, x.id]}, :placeholder => "choose ingredient" %>
+  <%= f.input :quantity , :collection => [1,2,3,4,5], :placeholder => "choose quantity" %>
+  <%= f.input :description %>
+  <%= f.submit "add ingredient", class: "btn btn-primary" %>
+<% end %>
