@@ -9,7 +9,7 @@
   <% @ingredients.each do |x| %>
     <div class="alert alert-info" role="alert">
       <%= x[:ingredient].name %>  <span class="badge"><%= "#{x[:dose].quantity} #{x[:ingredient].quantity_measurement}" %></span>
-      <%= link_to 'Destroy', doses_destroy_path(x[:dose]), method: :destroy, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Destroy', doses_destroy_path(x[:dose],:back=>@cocktail.id), method: :destroy, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
 

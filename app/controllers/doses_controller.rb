@@ -20,7 +20,7 @@ class DosesController < ApplicationController
 
   def destroy
     @dose.destroy
-    redirect_to cocktails_path(@cocktail), notice: 'Cocktail was successfully destroyed.'
+    redirect_to cocktail_path(params[:back]), notice: 'Ingredient was successfully destroyed.'
   end
 
   private
