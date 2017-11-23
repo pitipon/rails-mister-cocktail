@@ -1,24 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cocktail.name %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @cocktail.price %>
-</p>
+<div class="jumbotron">
+  <h1><%= @cocktail.name %></h1>
+  <p><%= @cocktail.description %> | Price: <%= @cocktail.price %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @cocktail.description %>
-</p>
 
-<p>
-  <strong>Alcohol:</strong>
-  <%= @cocktail.alcohol %>
-</p>
+  <% @ingredients.each do |x| %>
+    <div class="alert alert-info" role="alert">
+      <%= x[:ingredient].name %>  <span class="badge"><%= x[:dose].description %></span>
+    </div>
+  <% end %>
 
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
-<%= link_to 'Back', cocktails_path %>
+</div>
+
+
+
+<%= link_to 'Edit', edit_cocktail_path(@cocktail), :class => "btn btn-primary btn-xs" %>
+<%= link_to 'Back', cocktails_path, :class => "btn btn-primary btn-xs" %>

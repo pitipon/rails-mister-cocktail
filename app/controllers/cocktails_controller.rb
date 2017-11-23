@@ -1,5 +1,6 @@
 class CocktailsController < ApplicationController
   before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
+  before_action :find_ingredient, only: [:show]
 
   # GET /cocktails
   def index
@@ -8,6 +9,8 @@ class CocktailsController < ApplicationController
 
   # GET /cocktails/1
   def show
+    # @ingredients
+    p @ingredients
   end
 
   # GET /cocktails/new
@@ -46,6 +49,17 @@ class CocktailsController < ApplicationController
   end
 
   private
+
+    def find_ingredient
+      @ingredients = []
+      @cocktail.doses.each do |x|
+        @ingredients << {
+          dose: x,
+          ingredient: x.ingredient
+        }
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_cocktail
       @cocktail = Cocktail.find(params[:id])
