@@ -5,12 +5,7 @@
   <h1><%= @cocktail.name %></h1>
   <p><%= @cocktail.description %> | Price: <%= @cocktail.price %>$</p>
 
-  <!-- Show image -->
-  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-  <br>
-  <!-- Add button to add ingredient -->
-  <%= link_to 'Add more ingredient', new_cocktail_dose_path(@cocktail), :class => "btn btn-primary btn-xs" %>
-
+<%= link_to 'Add more ingredient', new_cocktail_dose_path(@cocktail), :class => "btn btn-primary btn-xs" %>
   <% @ingredients.each do |x| %>
     <div class="alert alert-info" role="alert">
       <%= x[:ingredient].name %>  <span class="badge"><%= "#{x[:dose].quantity} #{x[:ingredient].quantity_measurement}" %></span>

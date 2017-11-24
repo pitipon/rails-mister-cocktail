@@ -25,7 +25,7 @@ class CocktailsController < ApplicationController
   # POST /cocktails
   def create
     @cocktail = Cocktail.new(cocktail_params)
-    puts "\n\n\n #{cocktail_params} \n\n\n"
+
     if @cocktail.save
       redirect_to @cocktail, notice: 'Cocktail was successfully created.'
     else
